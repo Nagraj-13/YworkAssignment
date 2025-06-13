@@ -1,26 +1,160 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Base radius */
+  --radius: 0.625rem; /* 10px */
+
+  /* Light mode colors */
+  --background: #FFFFFF;              /* page background */
+  --foreground: #1F2937;              /* dark gray text */
+
+  --card: #FFFFFF;                    /* cards/panels background */
+  --card-foreground: #1F2937;         /* text on cards */
+
+  --popover: #FFFFFF;                 /* popover background */
+  --popover-foreground: #1F2937;      /* popover text */
+
+  --primary: #5C4FFF;                 /* accent purple for buttons, selected items */
+  --primary-foreground: #FFFFFF;      /* text on primary-colored elements */
+
+  --secondary: #F3F4F6;               /* light gray backgrounds */
+  --secondary-foreground: #1F2937;    /* text on secondary backgrounds */
+
+  --muted: #F9FAFB;                   /* very light gray for subtle backgrounds */
+  --muted-foreground: #6B7280;        /* medium gray text */
+
+  --accent: #5C4FFF;                  /* same purple accent */
+  --accent-foreground: #FFFFFF;
+
+  --destructive: #EF4444;             /* red for destructive actions */
+
+  --border: #E5E7EB;                  /* light border */
+  --input: #F9FAFB;                   /* input background */
+  --ring: #8B5CF6;                    /* focus ring (purple-600) */
+
+  /* Chart colors (example palette, tweak if desired) */
+  --chart-1: #6366F1;  /* indigo-500 */
+  --chart-2: #4F46E5;  /* indigo-600 */
+  --chart-3: #4338CA;  /* indigo-700 */
+  --chart-4: #818CF8;  /* indigo-400 */
+  --chart-5: #A78BFA;  /* purple-300 */
+
+  /* Sidebar in light mode */
+  --sidebar: #F9FAFB;                /* light sidebar background */
+  --sidebar-foreground: #1F2937;     /* sidebar text */
+  --sidebar-primary: #5C4FFF;        /* highlight / selected accent */
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #5C4FFF;         /* e.g., badges or icons accent */
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #E5E7EB;         /* divider line */
+  --sidebar-ring: #8B5CF6;           /* focus ring in sidebar */
+}
+
+.dark {
+  /* Dark mode overrides */
+  --background: #1F2937;             /* dark page background */
+  --foreground: #F9FAFB;             /* near-white text */
+
+  --card: #374151;                   /* darker card background */
+  --card-foreground: #F9FAFB;        /* text on card */
+
+  --popover: #374151;                /* popover bg */
+  --popover-foreground: #F9FAFB;     /* popover text */
+
+  --primary: #818CF8;                /* lighter purple accent on dark */
+  --primary-foreground: #1F2937;     /* text on primary bg */
+
+  --secondary: #4B5563;              /* dark gray backgrounds */
+  --secondary-foreground: #F9FAFB;    /* text on secondary */
+
+  --muted: #4B5563;                  /* subtle dark background */
+  --muted-foreground: #9CA3AF;       /* lighter gray text */
+
+  --accent: #818CF8;                 /* accent on dark */
+  --accent-foreground: #1F2937;
+
+  --destructive: #F87171;            /* slightly lighter red on dark */
+
+  --border: #1c2b41;                 /* border in dark */
+  --input: #374151;                  /* input background dark */
+  --ring: #8B5CF6;                   /* focus ring stays purple */
+
+  /* Chart colors for dark (tweak as desired) */
+  --chart-1: #6366F1;
+  --chart-2: #4F46E5;
+  --chart-3: #4338CA;
+  --chart-4: #818CF8;
+  --chart-5: #A78BFA;
+
+  /* Sidebar in dark */
+  --sidebar: #111827;                /* almost-black sidebar */
+  --sidebar-foreground: #F9FAFB;     /* light text */
+  --sidebar-primary: #818CF8;        /* selected highlight */
+  --sidebar-primary-foreground: #F9FAFB;
+  --sidebar-accent: #818CF8;
+  --sidebar-accent-foreground: #F9FAFB;
+  --sidebar-border: #374151;
+  --sidebar-ring: #8B5CF6;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
 }
