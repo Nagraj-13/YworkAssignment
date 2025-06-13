@@ -105,7 +105,7 @@ export default function ChatArea({ contact, messages, onSendMessage, isSidebarOp
       </div>
 
       {/* Messages */}
-      <ScrollArea className='h-[535px]'>
+      <ScrollArea className='h-[525px]'>
       <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-background">
         {messages.map((message, index) => (
           <MessageBubble
