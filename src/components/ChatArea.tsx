@@ -82,7 +82,7 @@ export default function ChatArea({ contact, messages, onSendMessage, isSidebarOp
       ${isSidebarOpen ? 'md:ml-0' : 'md:ml-0'}
     `}>
       {/* Chat Header */}
-      <div className="bg-card border-b  border-border px-6 py-2 flex items-center justify-between">
+      <div className="bg-card border-b  border-border px-6 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="relative">
             <div className={`
